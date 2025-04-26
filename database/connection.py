@@ -19,4 +19,5 @@ def databaseConnection():
     except psycopg2.OperationalError as err:
         print("Error establishing database connection", err)
         sys.exit(1) #exit program if the connection fails
-    return conn_pool, conn, cur
+    return conn, cur
+    # return conn_pool, conn, cur

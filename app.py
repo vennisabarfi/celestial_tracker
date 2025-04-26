@@ -3,7 +3,7 @@ from flask_cors import CORS
 import psycopg2
 from routes import health_bp, events_bp, subscriptions_bp, users_bp
 from database import databaseConnection
-# from dotenv import find_dotenv, load_dotenv
+from dotenv import find_dotenv, load_dotenv
 import sys, os
 # from flask_migratepg import MigratePg
 
@@ -14,7 +14,14 @@ app = Flask(__name__)
 # enable cors
 CORS(app)
 
+# load .env variables
+if not load_dotenv(find_dotenv()):
+    print("Error loading variables from dotenv")
+else:
+    print(".env file loaded successfully!") 
+    
 
+     
 # routes/endpoints
 app.register_blueprint(health_bp)
 

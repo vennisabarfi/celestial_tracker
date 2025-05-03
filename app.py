@@ -9,7 +9,13 @@ import sys, os
 
 
 app = Flask(__name__)
-
+ 
+#  database migrations
+app.config.from_mapping(
+    MIGRATIONS_PATH=os.path.abspath('database/migrations'),
+    PSYCOPG_CONNINFO=os.getenv("DATABASE_URL")
+)
+MigratePg(app)
 
 # enable cors
 CORS(app)

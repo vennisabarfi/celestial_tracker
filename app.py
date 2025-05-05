@@ -15,6 +15,7 @@ app.config.from_mapping(
     MIGRATIONS_PATH=os.path.abspath('database/migrations'),
     PSYCOPG_CONNINFO=os.getenv("DATABASE_URL")
 )
+# migrate
 MigratePg(app)
 
 # enable cors
